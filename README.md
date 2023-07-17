@@ -36,6 +36,23 @@ if let signature = jwt.signature {
 }
 ```
 
+### Decoding Body to a Codable Type
+
+You can decode the body section of the JWT token to a Codable type using the getBody method. Provide the Codable type you expect the body to be:
+
+```swift
+struct User: Codable {
+    let id: String
+    let name: String
+    // Other properties...
+}
+
+if let user: User = jwt.getBody(as: User.self) {
+    // Access decoded user object from the JWT body
+}
+```
+Note: Make sure the Codable type you provide matches the structure of the JWT token's body section.
+
 ### Accessing Claims
 
 ```swift
