@@ -17,7 +17,7 @@ extension Double {
 
 extension JWT {
     /// Retrieves the body section of the JWT token and decodes it into the specified type `T`.
-    func getBody<T: Codable>(as type: T.Type) -> T? {
+    public func getBody<T: Codable>(as type: T.Type) -> T? {
         guard let body = body else { return nil }
         guard let data = try? JSONSerialization.data(withJSONObject: body) else { return nil }
         let result = try? JSONDecoder().decode(T.self, from: data)
